@@ -18,7 +18,7 @@ class Board extends JPanel implements ActionListener {
 	boolean onsea = false;
 	int reqdx, reqdy, xondx, xondy;
 	Font smallfont = new Font("Helvetica", Font.BOLD, 12);
-	Timer timer ;
+	Timer timer;
 
     public Board( Xonix xn ) {
 		this.sizex = xn.sizex;
