@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Deque;
+import java.util.LinkedList;
 
 class Board extends JPanel implements ActionListener {
     int sizex, sizey, unitsize;
@@ -180,16 +182,41 @@ class Board extends JPanel implements ActionListener {
             }
     }
 
-    void floodFill( Entity[][] mapt, int x, int y ) {
-        // TODO: fix stack overflow
-        if ( mapt[x][y] != Entity.Empty && mapt[x][y] != Entity.Dot ) return;
-        mapt[x][y] = Entity.Wall;
-        floodFill( mapt,  x - 1, y );
-        floodFill( mapt, x + 1, y );
-        floodFill( mapt, x, y - 1 );
-        floodFill( mapt, x, y + 1 );
-        return;
-    }
+	void floodFill( Entity[][] mapt, int x, int y ) {
+		Integer xy = y * sizex + x;
+
+		if ( mapt[x][y] == Entity.Empty || mapt[x][y] == Entity.Dot ) {
+			Deque<Integer> queue = new LinkedList<Integer>();
+			do {
+				x = xy % sizex;
+				y = ( xy - x ) / sizex;
+				while (x > 0 && mapt[x-1][y] == Entity.Empty ) {
+					x--;
+				}
+				boolean spanUp = false;
+				boolean spanDown = false;
+				while (x < sizex && mapt[x][y] == Entity.Empty ) {
+					mapt[x][y] = Entity.Wall;
+					if( !spanUp && y > 0 && mapt[x][y-1] == Entity.Empty ) {
+						xy = (y - 1) * sizex + x;
+						queue.add( xy );
+						spanUp = true;
+					} else if( spanUp && y > 0 && mapt[x][y-1] != Entity.Empty ) {
+						spanUp = false;
+					}	
+					if( !spanDown && y < sizey - 1 && mapt[x][y+1] == Entity.Empty ) {
+						xy = (y + 1) * sizex + x;
+						queue.add( xy );
+						spanDown = true;
+					} else if( spanDown && y < sizey - 1 && mapt[x][y+1] != Entity.Empty ) {
+						spanDown = false;
+					}
+					x++;
+				}
+			} while ((xy = queue.pollFirst()) != null);
+		}
+	}
+	
 
     void FillArea() {
         Entity[][] mapt = new Entity[sizex+1][sizey+1];

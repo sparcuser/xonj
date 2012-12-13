@@ -6,8 +6,8 @@ import Xonix.Board;
 
 class Xonix extends JFrame{
 
-        int sizex = 100;
-        int sizey = 50;
+        int sizex = 200;
+        int sizey = 100;
         int unitsize = 5;
         static int offx = 6;    // to fit in window
         static int offy = 40;
