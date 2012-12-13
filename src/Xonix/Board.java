@@ -14,7 +14,7 @@ class Board extends JPanel implements ActionListener {
     Entity map[][];
     ArrayList<Dot> dots = new ArrayList<Dot>();
     int score, xonleft, level;
-    int xonx, xony, lxonx, lxony;
+    int xonx, xony;
     boolean ingame = false;
     boolean dying = false;
     boolean onsea = false;
@@ -39,7 +39,7 @@ class Board extends JPanel implements ActionListener {
         super.addNotify();
         GameInit();
     }
-    
+
     class Dot {
         public int x, y, dx, dy;
         public Entity type;
@@ -276,7 +276,6 @@ class Board extends JPanel implements ActionListener {
     }
 
     public void DrawScore(Graphics2D g) {
-        int i;
         String s;
 
         g.setFont(smallfont);
