@@ -240,18 +240,14 @@ class Board extends JPanel implements ActionListener {
         for( Dot i : dots ) {
             int nx = i.x + i.dx;
             int ny = i.y + i.dy;
-            Entity freepoint, occpoint;
+            Entity freepoint;
             boolean outx = false, outy = false;
 
-            if( i.type == Entity.Dot ) {
+            if( i.type == Entity.Dot )
                 freepoint = Entity.Empty;
-                occpoint = Entity.Wall;
-            }
-            else {
+            else
                 freepoint = Entity.Wall;
-                occpoint = Entity.Empty;
-            }
-            
+
             if( nx+i.dx<0 || nx+i.dx>sizex || map[nx+i.dx][ny] != freepoint ) { i.dx *= -1; outx = true; }
             if( ny+i.dy<0 || ny+i.dy>sizey || map[nx][ny+i.dy] != freepoint ) { i.dy *= -1; outy = true; }
                 
