@@ -181,13 +181,13 @@ class Board extends JPanel implements ActionListener {
     }
 
     void floodFill( Entity[][] mapt, int x, int y ) {
-        // TODO: check negative x and y
+        // TODO: fix stack overflow
         if ( mapt[x][y] != Entity.Empty && mapt[x][y] != Entity.Dot ) return;
         mapt[x][y] = Entity.Wall;
-        if( x > 0 ) floodFill( mapt,  x - 1, y );
-        if( x < sizex ) floodFill( mapt, x + 1, y );
-        if( y > 0) floodFill( mapt, x, y - 1 );
-        if( y < sizey ) floodFill( mapt, x, y + 1 );
+        floodFill( mapt,  x - 1, y );
+        floodFill( mapt, x + 1, y );
+        floodFill( mapt, x, y - 1 );
+        floodFill( mapt, x, y + 1 );
         return;
     }
 
