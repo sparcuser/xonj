@@ -304,7 +304,6 @@ class Board extends JPanel implements ActionListener {
         g.setColor( Color.white );
         DrawField( g2d );
         DrawScore( g2d );
-//      DoAnim();   // animation calculating code goes here (if needed )
         if ( ingame )
             PlayGame( g2d );
         else
