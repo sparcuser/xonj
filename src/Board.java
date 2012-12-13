@@ -216,7 +216,6 @@ class Board extends JPanel implements ActionListener {
 			} while ((xy = queue.pollFirst()) != null);
 		}
 	}
-	
 
     void FillArea() {
         Entity[][] mapt = new Entity[sizex+1][sizey+1];
@@ -260,7 +259,6 @@ class Board extends JPanel implements ActionListener {
                 i.dx *= -1;
                 i.dy *= -1;
             }
-
 
             // TODO: check why is this 'if' is needed
             if( nx > 0 && nx <= sizex && ny >0 && ny <= sizey && map[nx][ny] == freepoint ) {
