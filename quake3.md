@@ -1,0 +1,1 @@
+http://ioquake3.org/2010/08/24/high-resolution-creative-commons-texture-replacement-pack/

@@ -1,0 +1,1 @@
+https://github.com/PProvost/visualstudio-colors-solarized/6155600

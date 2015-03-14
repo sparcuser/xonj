@@ -1,0 +1,1 @@
+http://en.wikipedia.org/wiki/Star_Trek_(text_game)

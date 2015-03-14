@@ -1,0 +1,1 @@
+http://lists.fedoraproject.org/pipermail/mingw/2012-February/004610.html

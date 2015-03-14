@@ -1,0 +1,1 @@
+http://docs.puppyrus.org/howto-antivirus
